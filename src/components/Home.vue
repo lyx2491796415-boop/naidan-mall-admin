@@ -1,35 +1,27 @@
 <template>
-  <div class="home-container">
-    <MyHeader />
-    <div class="home-main-box">
-      <MyAside />
-      <div class="home-main-body">
-        <router-view></router-view>
-      </div>
+  <div class="layout">
+    <AppSidebar :collapsed="collapsed" />
+    <div class="main">
+      <AppHeader @toggle="collapsed = !collapsed" />
+      <main class="content">
+        <router-view v-slot="{ Component }">
+          <transition name="page" mode="out-in"><component :is="Component" /></transition>
+        </router-view>
+      </main>
     </div>
   </div>
 </template>
 
 <script setup>
-import MyHeader from './subcomponent/MyHeader.vue'
-import MyAside from './subcomponent/MyAside.vue'
+import { ref } from 'vue'
+import AppSidebar from './AppSidebar.vue'
+import AppHeader from './AppHeader.vue'
+const collapsed = ref(false)
 </script>
 
-<style lang="less">
-.home-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: #fff9ec;
-}
-.home-main-box {
-  flex: 1;
-  display: flex;
-  min-height: 0;
-}
-.home-main-body {
-  flex: 1;
-  overflow: auto;
-  min-width: 0;
-}
+<style scoped>
+.layout { display: flex; height: 100vh; overflow: hidden; }
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.content { flex: 1; overflow: auto; padding: 26px 30px 40px; }
+@media (max-width: 700px) { .content { padding: 18px 16px 30px; } }
 </style>

@@ -1,0 +1,70 @@
+:root {
+  --gold-1: #fff6e0;
+  --gold-2: #fce9b8;
+  --gold-3: #f6cf76;
+  --gold-4: #eda62a;
+  --gold-5: #c8800c;
+  --ink: #1c2029;
+  --ink-2: #2a2f3b;
+  --muted: #8a909e;
+  --bg: #f4f5f7;
+  --bg-soft: #eef0f3;
+  --card: #ffffff;
+  --line: #eaecf0;
+  --ok: #16b981;
+  --warn: #eda62a;
+  --danger: #e5484d;
+  --info: #4c7cf3;
+  --shadow-sm: 0 1px 3px rgba(20, 24, 34, .05), 0 4px 16px rgba(20, 24, 34, .04);
+  --shadow-md: 0 8px 30px rgba(20, 24, 34, .09);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --sidebar: #1b1f28;
+  --sidebar-2: #232833;
+  --sidebar-text: #aeb5c2;
+}
+
+body.dark {
+  --bg: #101319;
+  --bg-soft: #171b23;
+  --card: #1b1f28;
+  --line: #2b303b;
+  --ink: #edf0f5;
+  --ink-2: #d5dae3;
+  --muted: #8b93a2;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .3);
+  --shadow-md: 0 10px 34px rgba(0, 0, 0, .45);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #app { height: 100%; }
+
+body {
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  transition: background .25s, color .25s;
+}
+
+button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(140, 146, 158, .45); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.page-enter-active, .page-leave-active { transition: opacity .22s ease, transform .22s ease; }
+.page-enter-from { opacity: 0; transform: translateY(8px); }
+.page-leave-to { opacity: 0; transform: translateY(-8px); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .5s both; }
+
+@keyframes pop { 0% { transform: scale(.8); opacity: 0; } 70% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
